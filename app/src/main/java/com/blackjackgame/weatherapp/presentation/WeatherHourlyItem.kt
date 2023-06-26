@@ -1,4 +1,4 @@
 package com.blackjackgame.weatherapp.presentation
 
-class WeatherHourlyItem {
+data class WeatherHourlyItem(val image: Int, val temperature: String, val time:String) {
 }

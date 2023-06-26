@@ -8,18 +8,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.blackjackgame.weatherapp.R
 
-class WeatherHourlyAdapter(private var items: ArrayList<WeatherHourlyItem>) :
-    RecyclerView.Adapter<WeatherHourlyAdapter.CardViewHolder>() {
+class WeatherDailyAdapter(private var items: ArrayList<WeatherDailyItem>) :
+    RecyclerView.Adapter<WeatherDailyAdapter.CardViewHolder>() {
 
     class CardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val image: ImageView = view.findViewById(R.id.current_weather)
-        val temperature: TextView = view.findViewById(R.id.current_temperature)
-        val time: TextView = view.findViewById(R.id.time)
+        val image: ImageView = view.findViewById(R.id.day_image)
+        val temperature: TextView = view.findViewById(R.id.day_temperature)
+        val day: TextView = view.findViewById(R.id.day_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_weather_hourly, parent, false)
+            .inflate(R.layout.item_weather_daily, parent, false)
 
         return CardViewHolder(view)
     }
@@ -27,9 +27,9 @@ class WeatherHourlyAdapter(private var items: ArrayList<WeatherHourlyItem>) :
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         holder.image.setImageResource(items[position].image)
         holder.temperature.text = items[position].temperature
-        holder.time.text = items[position].time
+        holder.day.text = items[position].day.toString().lowercase().replaceFirstChar { it.uppercase() }
 
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount() = 6
 }
