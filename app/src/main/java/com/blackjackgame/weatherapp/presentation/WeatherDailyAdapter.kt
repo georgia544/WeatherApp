@@ -7,9 +7,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.blackjackgame.weatherapp.R
+import com.bumptech.glide.Glide
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class WeatherDailyAdapter(private var items: ArrayList<WeatherDailyItem>) :
     RecyclerView.Adapter<WeatherDailyAdapter.CardViewHolder>() {
+
+    fun updateItems(list: ArrayList<WeatherDailyItem>) {
+        items = list
+        notifyDataSetChanged()
+    }
+
 
     class CardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.day_image)
@@ -25,11 +34,26 @@ class WeatherDailyAdapter(private var items: ArrayList<WeatherDailyItem>) :
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        holder.image.setImageResource(items[position].image)
+        Glide
+            .with(holder.itemView)
+            .load("https:${items[position].image}")
+            .into(holder.image)
         holder.temperature.text = items[position].temperature
-        holder.day.text = items[position].day.toString().lowercase().replaceFirstChar { it.uppercase() }
+        holder.day.text = getDayOfTheWeek(items[position].day)
+
 
     }
 
-    override fun getItemCount() = 6
+    override fun getItemCount() = items.size
+
+    fun getDayOfTheWeek(s: Long?): String? {
+        try {
+            s ?: return ""
+            val sdf = SimpleDateFormat("EEEE")
+            val netDate = Date(s * 1000)
+            return sdf.format(netDate)
+        } catch (e: Exception) {
+            return e.toString()
+        }
+    }
 }

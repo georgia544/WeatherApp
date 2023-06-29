@@ -24,7 +24,9 @@ data class DayResponse(
     @SerializedName("totalprecip_mm")
     val rainfall:String,
     @SerializedName("condition")
-    val image:ConditionDayResponse
+    val image:ConditionDayResponse,
+    @SerializedName("avghumidity")
+    val humidity:String
 )
 
 data class ConditionDayResponse(

@@ -15,8 +15,8 @@ interface WeatherApi {
 
     @GET("forecast.json")
     fun getForecast(
-        @Query("key") key:String = "7eda25738b4d493ca8692830231806",
         @Query ("q") city:String,
+        @Query("key") key:String = "7eda25738b4d493ca8692830231806",
         @Query ("aqi") airQuality:String = "no",
         @Query ("alerts") weatherAlert:String = "no",
         @Query("days") days:String = "7"

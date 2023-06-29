@@ -9,10 +9,10 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/icon_active"
+        android:id="@+id/icon_inactive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_icon_active"
+        android:background="@drawable/background_icon_inactive"
         android:paddingHorizontal="4dp"
         android:paddingVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +31,7 @@
             app:layout_constraintBottom_toTopOf="@id/current_weather"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/icon_active"
+            app:layout_constraintTop_toTopOf="@id/icon_inactive"
             tools:text="now" />
 
         <ImageView
